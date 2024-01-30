@@ -82,11 +82,11 @@ sql中生成的测试用户 -> 用户名:chocoh，密码:123123。
 
 项目提供了多种现成客户端工具：
 + EmailClient：用于邮箱发送
-+ OssClient：用于阿里云OSS存储
++ OssClient：用于阿里云OSS对象存储
 
 配置使用客户端：
 
-1. 修改配置文件
+1. 在application.yml中配置属性
 
 ```yaml
 email:
@@ -105,8 +105,6 @@ oss:
 ```
 
 2. 注册客户端为bean
-
-`com.chocoh.ql.config.ClientConfig`
 
 ```java
 @Configuration
