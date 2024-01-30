@@ -41,15 +41,13 @@ ql-boot-simple
 
 ## 快速开始
 
-### 创建数据库表
+1. 创建数据库表
 
 `sql/ql_boot_simple.sql` 
 
 创建数据库执行sql文件，仅生成一个 user 表，对应 User 类，可按需扩充字段。
 
-### 修改application.yml文件
-
-`ql-framework/src/main/resources/application.yml`
+2. 修改application.yml文件
 
 修改 MySQL 和 Redis 连接配置
 
@@ -68,11 +66,11 @@ spring:
     password: yourPassword
 ```
 
-### 测试启动
+3. 测试启动
 
-启动项目，默认实现了登录和退出登录接口。
+启动前后端项目，默认实现了登录和退出登录接口。（sql中生成的测试用户 -> 用户名:chocoh，密码:123123）
 
-sql中生成的测试用户 -> 用户名:chocoh，密码:123123。
+前端测试项目：[ql-vue-template](https://github.com/chocohQL/ql-vue-template)
 
 ## 了解更多
 
@@ -80,9 +78,10 @@ sql中生成的测试用户 -> 用户名:chocoh，密码:123123。
 
 ### 修改客户端配置
 
-项目提供了多种现成客户端工具：
+项目提供了多种现成客户端、工具：
 + EmailClient：用于邮箱发送
 + OssClient：用于阿里云OSS对象存储
++ RedisService：对RedisTemplate常用操作的封装
 
 配置使用客户端：
 
