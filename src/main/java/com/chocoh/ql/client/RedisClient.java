@@ -1,4 +1,4 @@
-package com.chocoh.ql.utils;
+package com.chocoh.ql.client;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 @SuppressWarnings(value = { "unchecked", "rawtypes" })
-public class RedisService {
+public class RedisClient {
     @Autowired
     private RedisTemplate redisTemplate;
 

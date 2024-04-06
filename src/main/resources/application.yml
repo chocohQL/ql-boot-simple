@@ -21,3 +21,16 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+
+sa-token:
+  token-name: Authorization
+  token-style: random-128
+  token-prefix: Bearer
+  is-read-cookie: false
+  is-read-body: false
+  is-concurrent: true
+  is-read-header: true
+  is-share: true
+  is-log: true
+  timeout: 2592000
+  active-timeout: -1

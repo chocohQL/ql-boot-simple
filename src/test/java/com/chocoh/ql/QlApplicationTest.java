@@ -2,7 +2,7 @@ package com.chocoh.ql;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.chocoh.ql.constant.Constants;
+import com.chocoh.ql.common.Constants;
 import com.chocoh.ql.domain.entity.User;
 import com.chocoh.ql.domain.model.Response;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +27,7 @@ public class QlApplicationTest {
                 .put("3.1", System.currentTimeMillis())
                 .put("3.2", new Random().nextInt(8))
                 .getMap("3.3")
-                .put("4.1", Constants.TOKEN_NAME)
+                .put("4.1", Constants.ROLE_ADMIN)
                 .put("4.2", new User(1L, "chocoh", "123123", "admin"))
                 .put("4.3", new Response.DataMap().put("5.1", true).put("5.2", ""))
                 .ok()

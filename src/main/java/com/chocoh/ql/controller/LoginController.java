@@ -1,7 +1,7 @@
 package com.chocoh.ql.controller;
 
 import com.chocoh.ql.domain.model.Response;
-import com.chocoh.ql.domain.dto.LoginForm;
+import com.chocoh.ql.domain.dto.AuthForm;
 import com.chocoh.ql.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +15,8 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public Response login(@RequestBody LoginForm loginForm) {
-        return Response.success(loginService.login(loginForm.getUsername(), loginForm.getPassword()));
+    public Response login(@RequestBody AuthForm authForm) {
+        return Response.success(loginService.login(authForm.getUsername(), authForm.getPassword()));
     }
 
     @PostMapping("/logout")

@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
             throw new GlobalException("账号不存在");
         }
         if (DigestUtil.bcryptCheck(password, user.getPassword())) {
-            StpUtil.login(JSON.toJSONString(user));
+            StpUtil.login(user.getId());
             return StpUtil.getTokenInfo().getTokenValue();
         } else {
             throw new GlobalException("密码错误");

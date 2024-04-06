@@ -6,8 +6,7 @@ import lombok.Data;
  * @author chocoh
  */
 @Data
-public class LoginForm {
+public class AuthForm {
     private String username;
     private String password;
-    private String captcha;
 }

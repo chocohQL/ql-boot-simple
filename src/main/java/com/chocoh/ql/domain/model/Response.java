@@ -1,5 +1,5 @@
 package com.chocoh.ql.domain.model;
-import com.chocoh.ql.constant.HttpStatus;
+import com.chocoh.ql.common.HttpStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashMap;
 import java.util.Objects;
