@@ -1,11 +1,11 @@
 package com.chocoh.ql.controller;
 
+import com.chocoh.ql.domain.dto.AuthForm;
 import com.chocoh.ql.domain.model.Response;
 import com.chocoh.ql.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author chocoh
@@ -16,6 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @PostMapping("/login")
+    public Response login(@RequestBody @Validated AuthForm authForm) {
+        return Response.success(userService.login(authForm.getUsername(), authForm.getPassword()));
+    }
+
+    @PostMapping("/logout")
+    public Response logout() {
+        userService.logout();
+        return Response.success();
+    }
 
     @GetMapping("/me")
     public Response me() {

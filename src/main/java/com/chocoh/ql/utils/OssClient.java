@@ -1,14 +1,20 @@
-package com.chocoh.ql.client;
+package com.chocoh.ql.utils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.*;
 
 /**
+ * OSS工具封装
+ *
+ * <p>使用方式：1. 在application.yml中配置@Value。2. 使用@Component注解或配置@Bean。</p>
+ *
  * @author chocoh
  */
 public class OssClient {

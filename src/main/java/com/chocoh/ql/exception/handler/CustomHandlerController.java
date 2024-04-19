@@ -6,8 +6,13 @@ import com.chocoh.ql.common.HttpStatus;
 import com.chocoh.ql.domain.model.Response;
 import com.chocoh.ql.exception.GlobalException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.stream.Collectors;
 
 /**
  * @author chocoh
@@ -44,6 +49,25 @@ public class CustomHandlerController {
             // login
             message = "当前会话未登录";
         }
+        return Response.error(message);
+    }
+
+    /**
+     * 处理@RequestBody接口参数校验异常
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Response handleValidationException(MethodArgumentNotValidException e) {
+        return Response.error(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+    }
+
+    /**
+     * 处理@RequestParam接口参数校验异常
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Response handleConstraintViolationException(ConstraintViolationException e) {
+        String message = e.getConstraintViolations().stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.joining());
         return Response.error(message);
     }
 }

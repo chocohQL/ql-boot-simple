@@ -1,4 +1,4 @@
-package com.chocoh.ql.client;
+package com.chocoh.ql.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.FileUtil;
@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ * 邮箱工具封装
+ *
+ * <p>使用方式：1. 在application.yml中配置@Value。2. 使用@Component注解或配置@Bean。</p>
+ *
  * @author chocoh
  */
 public class EmailClient {
