@@ -1,6 +1,7 @@
 package com.chocoh.ql.config;
 
 import cn.dev33.satoken.interceptor.SaInterceptor;
+import cn.dev33.satoken.router.SaHttpMethod;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpUtil;
@@ -27,6 +28,7 @@ public class SaTokenConfigure implements WebMvcConfigurer, StpInterface {
         registry.addInterceptor(new SaInterceptor(handle -> {
             // 登录校验
             SaRouter.match("/**")
+                    .match(SaHttpMethod.OPTIONS).back()
                     .notMatch(
                             "/login",
                             "/register",
@@ -43,7 +45,7 @@ public class SaTokenConfigure implements WebMvcConfigurer, StpInterface {
         registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedOriginPatterns("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedMethods("*")
                 .allowedHeaders("*")
                 .exposedHeaders("*");
     }
