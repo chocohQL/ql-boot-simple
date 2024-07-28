@@ -28,7 +28,7 @@ public class QlApplicationTest {
                 .put("3.2", new Random().nextInt(8))
                 .getMap("3.3")
                 .put("4.1", Constants.ROLE_ADMIN)
-                .put("4.2", new User(1L, "chocoh", "123123", "admin"))
+                .put("4.2", new User(1L, "chocoh", "123123", null,  "admin"))
                 .put("4.3", new Response.DataMap().put("5.1", true).put("5.2", ""))
                 .ok()
                 .put("其他外层参数", "...");

@@ -30,9 +30,9 @@ public class SaTokenConfigure implements WebMvcConfigurer, StpInterface {
             SaRouter.match("/**")
                     .notMatch(SaHttpMethod.OPTIONS)
                     .notMatch(
-                            "/login",
-                            "/register",
-                            "/captcha"
+                            "/user/login",
+                            "/user/register",
+                            "/user/captcha"
                     )
                     .check(r -> StpUtil.checkLogin());
             // 权限校验
