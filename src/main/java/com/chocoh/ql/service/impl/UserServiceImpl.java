@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.chocoh.ql.domain.entity.User;
 import com.chocoh.ql.domain.vo.UserInfo;
 import com.chocoh.ql.exception.GlobalException;
+import com.chocoh.ql.exception.auth.PasswordErrorException;
+import com.chocoh.ql.exception.auth.UsernameNotFountException;
 import com.chocoh.ql.mapper.UserMapper;
 import com.chocoh.ql.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -26,13 +28,13 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
                 .eq(User::getUsername, username));
         if (user == null) {
-            throw new GlobalException("账号不存在");
+            throw new UsernameNotFountException();
         }
         if (DigestUtil.bcryptCheck(password, user.getPassword())) {
             StpUtil.login(user.getId());
             return StpUtil.getTokenInfo().getTokenValue();
         } else {
-            throw new GlobalException("密码错误");
+            throw new PasswordErrorException();
         }
     }
 

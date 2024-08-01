@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-import static com.chocoh.ql.common.Constants.*;
+import static com.chocoh.ql.common.constant.Constants.*;
 
 /**
  * @author chocoh

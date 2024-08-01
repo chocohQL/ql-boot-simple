@@ -1,5 +1,6 @@
 package com.chocoh.ql.domain.model;
-import com.chocoh.ql.common.HttpStatus;
+import com.chocoh.ql.common.constant.HttpStatus;
+import com.chocoh.ql.common.enums.ResultCodeEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashMap;
 import java.util.Objects;
@@ -22,6 +23,12 @@ public class Response extends HashMap<String, Object> {
         super.put(CODE, code);
         super.put(MSG, msg);
         super.put(DATA, data);
+    }
+
+    public Response(ResultCodeEnum resultCodeEnum) {
+        super.put(CODE, resultCodeEnum.getCode());
+        super.put(MSG, resultCodeEnum.getMsg());
+        super.put(DATA, null);
     }
 
     @Override

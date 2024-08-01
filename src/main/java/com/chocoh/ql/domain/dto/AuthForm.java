@@ -6,9 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import static com.chocoh.ql.common.Constants.PATTERN_PASSWORD;
-import static com.chocoh.ql.common.ResponseMsg.VALIDATE_PASSWORD;
-import static com.chocoh.ql.common.ResponseMsg.VALIDATE_USERNAME;
+import static com.chocoh.ql.common.constant.Constants.PATTERN_PASSWORD;
+import static com.chocoh.ql.common.constant.ResponseMsg.VALIDATE_PASSWORD;
+import static com.chocoh.ql.common.constant.ResponseMsg.VALIDATE_USERNAME;
 
 /**
  * @author chocoh

@@ -2,8 +2,10 @@ package com.chocoh.ql.exception.handler;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotRoleException;
-import com.chocoh.ql.common.HttpStatus;
+import com.chocoh.ql.common.constant.HttpStatus;
+import com.chocoh.ql.common.enums.ResultCodeEnum;
 import com.chocoh.ql.domain.model.Response;
+import com.chocoh.ql.exception.BusinessException;
 import com.chocoh.ql.exception.GlobalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -27,29 +29,29 @@ public class CustomHandlerController {
 
     @ExceptionHandler(NotRoleException.class)
     public Response handlerNotRoleException() {
-        return new Response(HttpStatus.FORBIDDEN, "权限不足", null);
+        return new Response(ResultCodeEnum.FORBIDDEN);
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public Response handlerBusinessException(BusinessException e) {
+        return new Response(e.getResultCodeEnum());
     }
 
     @ExceptionHandler(NotLoginException.class)
     public Response handlerNotLoginException(NotLoginException nle) {
-        String message;
+        ResultCodeEnum resultCodeEnum;
         if(nle.getType().equals(NotLoginException.NOT_TOKEN)) {
-            // Authorization
-            message = "未能读取到有效 token";
+            resultCodeEnum = ResultCodeEnum.NOT_TOKEN;
         } else if(nle.getType().equals(NotLoginException.INVALID_TOKEN)) {
-            // token
-            message = "token 无效";
+            resultCodeEnum = ResultCodeEnum.INVALID_TOKEN;
         } else if(nle.getType().equals(NotLoginException.TOKEN_TIMEOUT)) {
-            // timeout
-            message = "token 已过期";
+            resultCodeEnum = ResultCodeEnum.TOKEN_TIMEOUT;
         } else if(nle.getType().equals(NotLoginException.NO_PREFIX)) {
-            // Bearer
-            message = "未按照指定前缀提交 token";
+            resultCodeEnum = ResultCodeEnum.NO_PREFIX;
         } else {
-            // login
-            message = "当前会话未登录";
+            resultCodeEnum = ResultCodeEnum.NO_LOGIN;
         }
-        return Response.error(message);
+        return new Response(resultCodeEnum);
     }
 
     /**

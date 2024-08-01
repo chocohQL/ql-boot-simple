@@ -1,4 +1,4 @@
-package com.chocoh.ql.common;
+package com.chocoh.ql.common.constant;
 
 /**
  * @author chocoh

@@ -2,7 +2,7 @@ package com.chocoh.ql;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.chocoh.ql.common.Constants;
+import com.chocoh.ql.common.constant.Constants;
 import com.chocoh.ql.domain.entity.User;
 import com.chocoh.ql.domain.model.Response;
 import org.springframework.boot.test.context.SpringBootTest;
